@@ -1,11 +1,11 @@
 <template>
-  <div class="project">
+  <div class="project" :class="{complete: project.complete}">
       <div class="actions">
           <h3 @click="showDetails = !showDetails">{{project.title}}</h3>
           <div class="icon">
             <span class="material-icons">edit</span>
             <span class="material-icons" @click="deleteProject">delete</span>
-            <span class="material-icons" @click="completeProject">done</span>
+            <span class="material-icons tick" @click="completeProject">done</span>
           </div>
       </div>
       <div v-if ="showDetails" class="details">
@@ -70,5 +70,13 @@ export default {
 
   .material-icons:hover {
       color: #777;
+  }
+
+  .project.complete {
+      border-left: 4px solid rgb(28, 202, 28);
+  }
+
+  .project.complete .tick {
+      color: rgb(28, 202, 28)
   }
 </style>
